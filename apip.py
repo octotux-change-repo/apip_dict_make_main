@@ -10,8 +10,6 @@ import itertools as itert
 import pyfiglet as pfg
 import os
 import random as rand
-import hashlib as hl
-import gzip as gz
 class ModeIterProducts:
     def __init__(self):
         self.list_serail_code=[]
@@ -35,13 +33,14 @@ class ModeIterProducts:
             "i1":self.l1,
             "i2":self.l2,
         }
+        self.resume = 0
     def rash(self,val):
             val.clear()
     def _main_(self):
         for i in range(1,9):
             it=itert.product("NSL",repeat=i)
             for i in it:
-                self.list_serail_code.append(''.join(i))
+                self.list_serail_code.append(','.join(i))
         print("[+]dict key is maked")
         print("[*]quiting the proccess,and creat a new process to program:[OK]")
     def _Main_(self):
@@ -51,38 +50,57 @@ class ModeIterProducts:
         self.digital=0
         self.datas=[]
         self.digits = ["0123","4567","789"]
+        total_digits = 0
         for o in self.digits:
-            self.digital_32 = rand.randint(3,6)+1
+            max_len = 5
+            for f in range(max_len):
+                total_digits += len(o) ** f
+        for o in self.digits:
+            self.digital_32 = 5
             for f in range(self.digital_32):
                 its=itert.product(o,repeat=f)
                 for x in its:
                     self.data1.append(''.join(x))
                     print(pfg.figlet_format("HASHGIT_MAIN",font="slant"))
+                    print("[*]making digits")
                     print("[+]dict key is maked")
                     print("[*]quiting the proccess,and creat a new process to program:[OK]")
-                    print(f"[INFO]process value digit completed:{(len(self.data1)/round(22*(1024*1024*(10000/32))))}%")
+                    percent = (len(self.data1) / total_digits) * 100 if total_digits > 0 else 0
+                    print(f"[INFO]process value digit completed:{int(percent)}% ({len(self.data1)}/{total_digits})")
                     os.system("cls")
         with open("./configure.txt","a") as f:
             for i in self.data1:
                 f.write(i+".")
+        for o in self.crunch.values():
+            for o in o:
+                max_len = 5
+                for f in range(max_len):
+                    total_digits += len(o) ** f
         for i in self.crunch.values():
             for o in i:
-                self.digital_32 = rand.randint(3,6)+1
+                self.digital_32 = 5
                 for f in range(self.digital_32):
                     its=itert.product(o,repeat=f)
                     for x in its:
                         self.data2.append(''.join(x))
                         print(pfg.figlet_format("HASHGIT_MAIN",font="slant"))
+                        print("[*]making str")
                         print("[+]dict key is maked")
                         print("[*]quiting the proccess,and creat a new process to program:[OK]")
-                        print(f"[INFO]process value digit completed:{(len(self.data1)/round(22*(1024*1024*(10000/32))))}%")
+                        self.resume = len(self.data2)
+                        percent = (self.resume / total_digits) * 100 if total_digits > 0 else 0
+                        print(f"[INFO]process value digit completed:{int(percent)}% ({self.resume}/{total_digits})")
                         os.system("cls")
-                        if len(self.data2) <= 6 :
-                            print("[*]writing the file in the floader....")
-                            for g in self.data2:
-                                with open("./configure-2.txt","a") as f:
-                                    f.write(g+".")
-                        self.rash(self.data2)
+
+                    print("[*]writing the file in the floader....")
+                    for g in self.data2:
+                        with open("./configure-2.txt","a") as f:
+                            f.write(g+".")
+                self.rash(self.data2)
+        for o in self.crunch1.values():
+            max_len = 5
+            for f in range(max_len):
+                total_digits += len(o) ** f
         for i in self.crunch1.values():
             for o in i:
                 for f in range(self.digital_32):
@@ -92,14 +110,44 @@ class ModeIterProducts:
                         print(pfg.figlet_format("HASHGIT_MAIN",font="slant"))
                         print("[+]dict key is maked")
                         print("[*]quiting the proccess,and creat a new process to program:[OK]")
-                        print(f"[INFO]process value digit completed:{(len(self.data1)/round(22*(1024*1024*(10000/32))))}%")
+                        percent = (len(self.data3) / total_digits) * 100 if total_digits > 0 else 0
+                        print(f"[INFO]process value digit completed:{int(percent)}% ({len(self.data2)}/{total_digits})")
                         os.system("cls")
         with open("./configure-3.txt","a") as f:
             for i in self.data3:
-                f.write(i+".")   
+                f.write(i+".")
+
+    def iternet_count(self):
+        self.bytes = []
+        self.list_ = []
+        ...
+        with open("./configure.txt", "rb") as f:
+            list_9 = f.read()
+        with open("./configure-2.txt", "rb") as f:
+            list_10 = f.read()
+        with open("./configure-3.txt", "rb") as f:
+            list_11 = f.read()
+        list_9 = list_9.split(".")
+        list_10 = list_10.split(".")
+        list_11 = list_11.split(".")
+        N = set(list_9)
+        S = set(list_10)
+        L = set(list_11)
+        for i in self.list_serail_code:
+            string = f"""
+for x in itert.product({str(i)}):
+    self.bytes.append(''.join(x))
+for x in self.bytes :
+    with open("./application.txt","a") as f:
+        print(None,x)
+        f.write(x+".")
+self.rash(self.bytes)
+                """
+            exec(string,locals(),globals())
     def __call__(self):
         self._main_()
         self._Main_()
+        self.iternet_count()
 app=ModeIterProducts()
 app.__call__()
 print("[*]the program is non can make key dict")
